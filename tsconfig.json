@@ -17,7 +17,7 @@
 		"jsx": "react"
 	},
     "include": [
-        "source/react/*"
+        "source/index.tx"
     ],
 	"exclude": [
 		"node_modules"
