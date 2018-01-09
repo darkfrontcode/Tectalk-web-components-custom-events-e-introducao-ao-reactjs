@@ -7,10 +7,6 @@ class buttonComponent extends HTMLElement
 	{
 		super()
 		this.shadow = this.attachShadow({mode: 'open'})
-	}
-
-	public connectedCallback() : void
-	{
 
 		const style = `
 			<style>
@@ -56,38 +52,51 @@ class buttonComponent extends HTMLElement
 			${style}
 			${template}
 		`
+
 	}
 
-	static get observedAttributes()
+	public connectedCallback() : void
 	{
-		return ['name']
+		setInterval(() => {
+
+			this.name = this.name == 'Shuffle' ? 'Click' : 'Shuffle'
+
+		}, 500)
 	}
 
-	attributeChangedCallback(name:string, old_value:string, new_value:string)
+	public static get observedAttributes() : Array<string>
+	{
+		return new Array<string>('name')
+	}
+
+	public attributeChangedCallback(name:string, old_value:string, new_value:string) : void
 	{
 		switch(name)
 		{
-			case 'name': 
+			case 'name':
 
-				this._name = new_value
-
-				const div = <HTMLElement>this.shadow.querySelector('.button-component')
-				div.textContent = new_value
+				const button = <HTMLElement>this.shadow.querySelector('button')
+				button.textContent = new_value
 
 			break
 		}
 	}
 
-	get name()
+	get name() : string
 	{
 		return this._name
 	}
 
 	set name(value:string)
 	{
+		this._name = value
 		this.setAttribute('name', value)
 	}
 
 }
 
-customElements.define('button-component', buttonComponent);
+window.onload = () => {
+
+	customElements.define('button-component', buttonComponent)
+	
+}
