@@ -1,6 +1,6 @@
 class buttonComponent extends HTMLElement
 {
-	public _name: string
+	private _name: string
 	public shadow: ShadowRoot
 
 	constructor()
@@ -27,7 +27,7 @@ class buttonComponent extends HTMLElement
 		return ['name']
 	}
 
-	attributeChangedCallback(name:any, old_value:any, new_value:any)
+	attributeChangedCallback(name:string, old_value:string, new_value:string)
 	{
 		switch(name)
 		{
