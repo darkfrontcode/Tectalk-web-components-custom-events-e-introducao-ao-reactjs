@@ -1,21 +1,25 @@
 class buttonComponent extends HTMLElement
 {
-	// public name: string
-	// public shadow: ShadowRoot
+	public _name: string
+	public shadow: ShadowRoot
 
 	constructor()
 	{
 		super()
-		// this.shadow = this.attachShadow({mode: 'open'})
-		// this.shadow.innerHTML = `
-		// 	<style>
-		// 		body
-		// 		{
-		// 			background: red;
-		// 		}
-		// 	</style>
-		// 	<div class="button-component">${this.text}</div>
-		// `
+		this.shadow = this.attachShadow({mode: 'open'})
+	}
+
+	public connectedCallback() : void
+	{
+		this.shadow.innerHTML = `
+			<style>
+				body
+				{
+					background: red;
+				}
+			</style>
+			<div class="button-component">${this.name}</div>
+		`
 	}
 
 	static get observedAttributes()
@@ -28,9 +32,24 @@ class buttonComponent extends HTMLElement
 		switch(name)
 		{
 			case 'name': 
-				this.textContent = `Hello, ${new_value}`
+
+				this._name = new_value
+
+				const div = <HTMLElement>this.shadow.querySelector('.button-component')
+				div.textContent = new_value
+
 			break
 		}
+	}
+
+	get name()
+	{
+		return this._name
+	}
+
+	set name(value:string)
+	{
+		this.setAttribute('name', value)
 	}
 
 }
