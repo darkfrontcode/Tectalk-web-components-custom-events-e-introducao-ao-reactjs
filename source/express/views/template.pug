@@ -6,14 +6,22 @@ html(lang="en")
 		meta(http-equiv="X-UA-Compatible", content="ie=edge")
 		title Tectalk Web Components, Custom Events e Introducao ao ReactJS
 		style.
+			html,
+			body
+			{
+				height: 100%;
+			}
+
 			body
 			{
 				background: #4B54DF;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 100%;
+				align-items: center;
 			}
-
 
 		link(href="https://fonts.googleapis.com/css?family=Lobster", rel="stylesheet")
 		link(href="https://fonts.googleapis.com/css?family=Roboto+Mono", rel="stylesheet")
 	body
-		button-component(name="Shuffle")
-		friends-component

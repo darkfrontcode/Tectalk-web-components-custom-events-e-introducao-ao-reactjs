@@ -1,0 +1,72 @@
+/* ==========================================================================
+   -- Colors
+   ========================================================================== */
+
+// Green
+$color-green-primary 	= #08C9D8
+$color-green-secondary 	= #50F2FF
+
+/* ==========================================================================
+   -- Titles
+   ========================================================================== */
+
+title-base()
+	font-weight normal
+	margin 0
+	padding 0
+	
+title-secondary()
+	title-base()
+	title-white()
+	font-size 20px
+
+/* ==========================================================================
+   -- Buttons
+   ========================================================================== */
+
+button-base()
+	font-family 'Lobster', cursive
+	margin 0
+	padding 0
+	border 0
+	
+	&:focus
+		outline none
+
+button-rounded()
+	button-base()
+	title-secondary()
+	position relative
+	transition background-color .25s
+	display flex
+	flex-grow 1
+	flex-shrink 0
+	justify-content center
+	height 55px
+	color white
+	text-align center
+	margin auto
+	border-radius 36px
+	text-shadow 0 2px 0 alpha(black, .2)
+	box-shadow inset 0 -4px 0 0 alpha(black, .2), 0 4px 0 0 alpha(black, .2)
+	cursor pointer
+	
+	&:active
+		box-shadow inset 0 -2px 0 0 alpha(black, .2), 0 2px 0 0 alpha(black, .2)
+		top 2px
+	
+button-primary()
+	button-rounded()
+	background-color $color-green-primary
+	
+	&:hover
+		background-color lighten($color-green-primary, 10%)
+
+
+/* ==========================================================================
+   -- Component
+   ========================================================================== */
+
+:host button
+	button-primary()
+	padding 0 40px

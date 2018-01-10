@@ -1,0 +1,33 @@
+/* ==========================================================================
+   -- Titles
+   ========================================================================== */
+
+title-base()
+	font-family 'Lobster', cursive
+	font-weight normal
+	margin 0
+	padding 0
+
+title-white()
+	color white
+	display flex
+	justify-content center
+
+title-primary()
+	title-base()
+	title-white()
+	font-size 40px
+	
+title-secondary()
+	title-base()
+	title-white()
+	font-size 20px
+
+.title-primary
+	title-primary()
+	
+.title-secondary
+	title-secondary()
+
+:host
+	title-primary()

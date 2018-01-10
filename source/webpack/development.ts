@@ -31,22 +31,18 @@ export default <any>{
 				test: /\.js$/,
 				use: [ 'source-map-loader' ],
 				enforce: 'pre'
-			},
+			},		
 			{
 				test: /\.styl$/,
 				use: [
-					'style-loader',
+					'to-string-loader',
 					{ 
 						loader: 'css-loader', 
 						options: { importLoaders: 1 }
 					},
-					{
-						loader: 'postcss-loader',
-						options: { sourceMap: true }
-					},
 					'stylus-loader'
 				]
-			},			
+			},	
 			{
 				include: /\.pug/,
 				use: [ 'pug-loader' ]

@@ -1,12 +1,24 @@
-import { buttonComponent } from './web-components/button.component'
-import { FriendsComponent } from './web-components/friends.component'
+import { FriendComponent } from './web-components/friend/friend.component'
+import { ButtonComponent } from './web-components/button/button.component'
 
 window.onload = () => {
 
-	customElements.define('button-component', buttonComponent)
-	customElements.define('friends-component', FriendsComponent)
+	// defining components
+	customElements.define('friend-component', FriendComponent)
+	customElements.define('button-component', ButtonComponent)
 
-	// window.addEventListener('alert', (data:any) => console.log(data.detail))
-	// window.addEventListener('random', (data:any) => console.log(data.detail))
+	// appending components to body
+	new Array<HTMLElement>(
+		document.createElement('friend-component'),
+		document.createElement('button-component')
+	).map((component:HTMLElement) => document.body.appendChild(component))
+
+	// Custom event
+	window.addEventListener('random', (data:any) => {
+
+		const friendComponent = <HTMLElement>document.querySelector('friend-component')
+		friendComponent.setAttribute('friend', data.detail)
+		
+	})
 	
 }
